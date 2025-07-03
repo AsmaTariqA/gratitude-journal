@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import Notecontext from "../context/notes/Notecontext";
-import Noteitem from './Noteitem';
+
 import Addnote from './Addnote';
 import { useNavigate } from 'react-router-dom';
 import { FiEdit3, FiX, FiCheckCircle, FiBookOpen } from 'react-icons/fi';
@@ -26,7 +26,9 @@ const Notes = (props) => {
     } else {
       navigate('/login');
     }
+     // eslint-disable-next-line
   }, []);
+  
 
   const ref = useRef(null);
   const refClose = useRef(null);
