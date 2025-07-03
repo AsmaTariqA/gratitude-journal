@@ -1,12 +1,33 @@
-/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
+.collapse {
+  visibility: visible; /* Ensures content is visible */
 }
 
+body {
+  /* bg-gradient-to-b from-[#F7CFD8] to-[#A6D6D6] */
+  margin: 0;
+  padding: 0;
+  background:linear-gradient(#F7CFD8, #A6D6D6 ) ;
+    font-family: "Poppins", sans-serif;
+  
+}
+nav .btn{
+  background-color: #987D9A;
+}
+.btn:hover {
+  box-shadow: 0 0 20px #7f5981; 
+  
+}
+.wel-desc{
+  font-family: "Caveat Brush", cursive;
+}
+h1 {
+  font-family: "Caveat Brush", cursive;
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -14,7 +35,7 @@ body {
 }
 
 .navbar {
-  background-color: #343a40;
+  background-color:#c285b0;
   color: #fff;
   padding: 10px 0;
 }
@@ -25,10 +46,10 @@ body {
   margin: 0 15px;
   font-size: 16px;
 }
-
-.navbar a:hover {
-  text-decoration: underline;
+.navbar a:hover{
+  color: #7f5981;
 }
+
 
 .card {
   background-color: #f3f3f3;
@@ -37,7 +58,7 @@ body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0 0 20px #6893c2; 
+  
   transition: box-shadow 0.3s ease;
 }
 
@@ -57,29 +78,6 @@ body {
   border: 1px solid #ced4da;
   border-radius: 4px;
   box-sizing: border-box;
-}
-
-.btn {
-  background-color: #8c00ff;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  box-shadow: 0 0 20px #007bff; 
-  transition: box-shadow 0.3s ease;
-}
-.btn:hover {
-  box-shadow: 0 0 20px #007bff; /* Adjust the glow effect on hover */
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
 }
 
 .btn-secondary {
