@@ -8,32 +8,41 @@ const Signup = (props) => {
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      setLoading(true);
-      const { name, email, password } = credentials;
-      const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, password }),
-      });
-      const json = await response.json();
-      if (json.success) {
-        localStorage.setItem('token', json.authToken);
-        navigate('/');
-        props.showAlert("Account created successfully", "success");
-      } else {
-        props.showAlert("Invalid credentials", "danger");
-      }
-    } catch (error) {
-      console.error('Error during signup:', error);
-      props.showAlert('An error occurred during signup. Please try again.', 'danger');
-    } finally {
-      setLoading(false);
+  e.preventDefault();
+
+  if (credentials.password !== credentials.cpassword) {
+    props.showAlert("Passwords do not match", "danger");
+    return;
+  }
+
+  try {
+    setLoading(true);
+    const { name, email, password } = credentials;
+    const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, password }),
+    });
+
+    const json = await response.json();
+
+    if (json.success) {
+      localStorage.setItem('token', json.authToken);
+      navigate('/');
+      props.showAlert("Account created successfully", "success");
+    } else {
+      props.showAlert(json.error || "Invalid credentials", "danger");
     }
-  };
+  } catch (error) {
+    console.error('Error during signup:', error);
+    props.showAlert('An error occurred during signup. Please try again.', 'danger');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
