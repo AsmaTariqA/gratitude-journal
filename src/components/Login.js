@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { FiMail, FiLock, FiBook } from 'react-icons/fi';
 import Image from './image1.png';
 import Image2 from './image.png';
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
@@ -13,7 +13,7 @@ const Login = (props) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/auth/login`, {
+      const response = await fetch(`${BASE_URL}/api/auth/createuser`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
