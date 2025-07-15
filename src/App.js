@@ -27,6 +27,7 @@ function App() {
 
   return (
     <>
+    
       <NoteState>
         <Navbar />
         <Alert alert={alert} />

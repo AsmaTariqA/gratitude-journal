@@ -3,7 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { FiMail, FiLock, FiBook } from 'react-icons/fi';
 import Image from './image1.png';
 import Image2 from './image.png';
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+
 const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
